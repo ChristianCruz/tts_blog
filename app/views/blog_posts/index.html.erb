@@ -1,0 +1,32 @@
+<div class="row">
+  <p id="notice"><%= notice %></p>
+
+  <h1 class="center-align"><strong>Listing Blog Posts</strong></h1>
+
+  <hr>
+
+    <br>
+
+  <%= link_to 'New Blog post', new_blog_post_path, class: 'btn-large col s12' %>
+
+  <br><br>
+
+  <div class="row">
+          <% @blog_posts.each do |blog_post| %>
+    <div class="col s12 m6">
+      <div class="card z-depth-2 darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"><strong><%= link_to blog_post.title, blog_post %></strong></span><br>
+          <small><%= blog_post.author %></small><br><br>
+          <p><%= blog_post.blog_entry[0..250] %>...</p><%= link_to "Read More", blog_post%>
+        </div>
+        <div class="card-action">
+          <%= link_to 'Edit', edit_blog_post_path(blog_post) %>
+          <%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+      <% end %>
+  </div>
+</div>
+
